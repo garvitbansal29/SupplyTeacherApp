@@ -9,27 +9,21 @@ import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-
-public class TeacherRegisterDetails extends AppCompatActivity {
-
+public class SchoolRegisterDetail extends AppCompatActivity {
     String username, name, address, phone, email;
     EditText name_field, address_field, phone_field, email_field;
     Database database = new Database(this);
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_register_details);
+        setContentView(R.layout.activity_school_register_detail);
 
         name_field = findViewById(R.id.name_field);
         address_field = findViewById(R.id.address_field);
         phone_field = findViewById(R.id.phoneNumber_field);
-//        email_field = findViewById(R.id.email_field);
-
     }
 
-    public void registerTeacherDetailsOnClick(View view)
+    public void registerSchoolDetailsOnClick(View view)
     {
         username = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -38,9 +32,7 @@ public class TeacherRegisterDetails extends AppCompatActivity {
         phone= phone_field.getText().toString();
 //        email= email_field.getText().toString();
 
-        startActivity(new Intent(this, TeacherHome.class));
-        database.addTeacherDetails(username, name, address, phone);
+        startActivity(new Intent(this, SchoolHome.class));
+        database.addStudentDetails(username, name, address, phone);
     }
-
-
 }

@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/SupplyEdLogo"
+        android:id="@+id/supplyed_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -31,7 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SupplyEdLogo"
+        app:layout_constraintTop_toBottomOf="@+id/supplyed_logo"
         tools:text="Teacher" />
 
     <Button
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@+id/teacher_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SupplyEdLogo"
+        app:layout_constraintTop_toBottomOf="@+id/supplyed_logo"
         tools:text="School" />
 
 

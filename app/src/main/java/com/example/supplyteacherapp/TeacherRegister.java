@@ -33,7 +33,7 @@ public class TeacherRegister extends AppCompatActivity {
     {
         email = emailEditTxt.getText().toString();
         password = passwordEditTxt.getText().toString();
-        startActivity(new Intent(this, TeacherHome.class));
+        startActivity(new Intent(this, TeacherRegisterDetails.class));
         database.registerNewUser(email, password);
 
     }

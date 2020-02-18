@@ -32,8 +32,8 @@ public class SchoolRegister extends AppCompatActivity {
     {
         email = emailEditTxt.getText().toString();
         password = passwordEditTxt.getText().toString();
-        startActivity(new Intent(this, SchoolHome.class));
         database.registerNewUser(email, password);
+        startActivity(new Intent(this, SchoolRegisterDetail.class));
 
     }
 
