@@ -100,9 +100,20 @@ public class Database {
         mDatabase.child("School").child(username).child("Name").setValue(name);
         mDatabase.child("School").child(username).child("Address").setValue(address);
         mDatabase.child("School").child(username).child("Phone").setValue(phone);
+    }
 
+    public void addSchoolDetailsWithSchoolClass(String schoolID, School school)
+    {
+        mDatabase.child("School").child(schoolID).setValue(school);
 
     }
+
+    public void addTeacherDetailsWithTeachClass(TeacherAccount teacher, String teacherID)
+    {
+        mDatabase.child("Teacher").child(teacherID).setValue(teacher);
+    }
+
+
     public void  updateUI(FirebaseUser account, Class nextActivityContext){
         if(account != null){
             Intent intent = new Intent(classContext,nextActivityContext);

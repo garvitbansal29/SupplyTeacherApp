@@ -26,14 +26,14 @@
         android:ems="10"
         android:hint="name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/address_field"
+        app:layout_constraintBottom_toTopOf="@+id/addressLine1_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     <EditText
-        android:id="@+id/address_field"
+        android:id="@+id/addressLine1_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
@@ -51,8 +51,8 @@
         android:ems="10"
         android:hint="phone"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/address_field"
-        app:layout_constraintTop_toBottomOf="@+id/address_field" />
+        app:layout_constraintStart_toStartOf="@+id/addressLine1_field"
+        app:layout_constraintTop_toBottomOf="@+id/addressLine1_field" />
 
     <Button
         android:id="@+id/submit_btn"
