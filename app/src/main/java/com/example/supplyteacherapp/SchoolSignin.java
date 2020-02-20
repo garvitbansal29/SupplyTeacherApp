@@ -31,7 +31,7 @@ public class SchoolSignin extends AppCompatActivity {
     {
         email = emailEditTxt.getText().toString();
         password  = passwordEditTxt.getText().toString();
-        database.signinUser(email, password, SchoolHome.class);
+        database.signinUser(email, password, SchoolHome.class, "School");
 //        startActivity(new Intent(this, SchoolHome.class));
 
     }

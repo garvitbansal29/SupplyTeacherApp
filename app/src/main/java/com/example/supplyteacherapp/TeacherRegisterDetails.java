@@ -60,7 +60,7 @@ public class TeacherRegisterDetails extends AppCompatActivity {
         subjects = subjects_field.getText().toString();
 
         TeacherAccount teacherAccount = new TeacherAccount(teacherName, postcode, addressLine1, addressLine2, town, county, phone, email, drivingLicense, yearsOfExperience, subjects, DBS);
-        database.addTeacherDetailsWithTeachClass(teacherAccount, username);
+        database.addTeacherDetails(teacherAccount, username);
 
         startActivity(new Intent(this, TeacherHome.class));
 
