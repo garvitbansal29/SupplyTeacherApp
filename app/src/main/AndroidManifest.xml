@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SchoolRegisterDetail"></activity>
         <activity android:name=".TeacherRegisterDetails" />
+
         <activity android:name=".SchoolHome" />
         <activity android:name=".SchoolSignin" />
         <activity android:name=".SchoolRegister" />

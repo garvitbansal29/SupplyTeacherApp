@@ -4,14 +4,12 @@ public class TeacherAccount extends Account {
 
     boolean drivingLicense;
     int yearsOfExperience;
-    String subjects;
     boolean dbs;
 
-    public TeacherAccount(String accountName, String postcode, String addressLine1, String addressLine2, String town, String county, String phone, String emailAddress, boolean drivingLicense, int yearsOfExperience, String subjects, boolean dbs) {
+    public TeacherAccount(String accountName, String postcode, String addressLine1, String addressLine2, String town, String county, String phone, String emailAddress, boolean drivingLicense, int yearsOfExperience,  boolean dbs) {
         super(accountName, postcode, addressLine1, addressLine2, town, county, phone, emailAddress);
         this.drivingLicense = drivingLicense;
         this.yearsOfExperience = yearsOfExperience;
-        this.subjects = subjects;
         this.dbs = dbs;
     }
 
@@ -31,13 +29,6 @@ public class TeacherAccount extends Account {
         this.yearsOfExperience = yearsOfExperience;
     }
 
-    public String getSubjects() {
-        return subjects;
-    }
-
-    public void setSubjects(String subjects) {
-        this.subjects = subjects;
-    }
 
     public boolean isDbs() {
         return dbs;

@@ -11,13 +11,11 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="74dp"
         android:layout_marginEnd="84dp"
+        android:layout_marginBottom="20dp"
         android:text="Register your details (TEACHER)"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/drivingLicense_checkBox"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/postcode_field"
+        app:layout_constraintEnd_toEndOf="@+id/postcode_field" />
 
 
     <EditText
@@ -25,30 +23,27 @@
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginStart="7dp"
-        android:layout_marginTop="27dp"
         android:layout_marginEnd="7dp"
-        android:layout_marginBottom="35dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/addressLine1_field"
+        app:layout_constraintBaseline_toBaselineOf="@+id/postcode_field"
         app:layout_constraintEnd_toStartOf="@+id/postcode_field"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/addressLine2_field"
         android:layout_width="380dp"
         android:layout_height="53dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginBottom="172dp"
+        android:layout_marginTop="83dp"
+        android:layout_marginBottom="83dp"
         android:ems="10"
         android:hint="Address Line 2"
         android:inputType="textPostalAddress"
-        app:layout_constraintBottom_toTopOf="@+id/yearsOfExperience_field"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneNumber_field"
         app:layout_constraintEnd_toEndOf="@+id/town_field"
         app:layout_constraintStart_toEndOf="@+id/town_field"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/postcode_field" />
 
     <EditText
         android:id="@+id/phoneNumber_field"
@@ -66,9 +61,9 @@
         android:id="@+id/county_field"
         android:layout_width="0dp"
         android:layout_height="41dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="49dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="54dp"
+        android:layout_marginBottom="46dp"
         android:ems="10"
         android:hint="County"
         android:inputType="textPostalAddress"
@@ -78,43 +73,29 @@
         app:layout_constraintTop_toTopOf="@+id/addressLine2_field" />
 
     <EditText
-        android:id="@+id/subjects_field"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="26dp"
-        android:ems="10"
-        android:hint="Subjects"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearsOfExperience_field" />
-
-    <EditText
         android:id="@+id/yearsOfExperience_field"
         android:layout_width="0dp"
         android:layout_height="47dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="17dp"
+        android:layout_marginBottom="121dp"
         android:ems="10"
         android:hint="Years Of Experience"
         android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/subjects_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DBS_checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/town_field" />
 
     <CheckBox
         android:id="@+id/DBS_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginEnd="69dp"
         android:text="DBS"
-        app:layout_constraintEnd_toEndOf="@+id/yearsOfExperience_field"
+        app:layout_constraintEnd_toEndOf="@+id/phoneNumber_field"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber_field" />
 
     <EditText
@@ -133,12 +114,12 @@
         android:id="@+id/submit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="28dp"
         android:onClick="registerTeacherDetailsOnClick"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/yearsOfExperience_field"
-        app:layout_constraintStart_toStartOf="@+id/yearsOfExperience_field" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
         android:id="@+id/drivingLicense_checkBox"
@@ -155,28 +136,38 @@
         android:id="@+id/postcode_field"
         android:layout_width="0dp"
         android:layout_height="54dp"
+        android:layout_marginTop="113dp"
         android:layout_marginEnd="9dp"
         android:ems="10"
         android:hint="Postcode"
         android:inputType="textPostalAddress"
-        app:layout_constraintBaseline_toBaselineOf="@+id/name_field"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/name_field" />
+        app:layout_constraintStart_toEndOf="@+id/name_field"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/addressLine1_field"
         android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="114dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="113dp"
+        android:layout_height="0dp"
         android:ems="10"
         android:hint="Address Line 1"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/county_field"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/subjects_field"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="28dp"
+        android:hint="Enter Subjects"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

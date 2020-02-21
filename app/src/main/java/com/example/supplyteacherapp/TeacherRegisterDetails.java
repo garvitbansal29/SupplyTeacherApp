@@ -59,12 +59,19 @@ public class TeacherRegisterDetails extends AppCompatActivity {
         yearsOfExperience = Integer.valueOf(stringYearsOfExperience);
         subjects = subjects_field.getText().toString();
 
-        TeacherAccount teacherAccount = new TeacherAccount(teacherName, postcode, addressLine1, addressLine2, town, county, phone, email, drivingLicense, yearsOfExperience, subjects, DBS);
+        TeacherAccount teacherAccount = new TeacherAccount(teacherName, postcode, addressLine1, addressLine2, town, county, phone, email, drivingLicense, yearsOfExperience, DBS);
         database.addTeacherDetails(teacherAccount, username);
 
         startActivity(new Intent(this, TeacherHome.class));
 
     }
+
+    public void addSubjectList(EditText subjectsListField)
+    {
+
+
+    }
+
 
 
 }
