@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SchoolRegisterDetail"></activity>
+        <activity android:name=".School_SearchTeacher"></activity>
+        <activity android:name=".SchoolRegisterDetail" />
         <activity android:name=".TeacherRegisterDetails" />
-
         <activity android:name=".SchoolHome" />
         <activity android:name=".SchoolSignin" />
         <activity android:name=".SchoolRegister" />

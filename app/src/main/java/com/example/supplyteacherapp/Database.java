@@ -124,5 +124,8 @@ public class Database {
         }
     }
 
-    
+    public void addTeacherSubjects(String userID, String subject)
+    {
+        mDatabase.child("TeacherLanguages").child(userID).push().setValue(subject);
+    }
 }

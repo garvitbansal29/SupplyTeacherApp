@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void teacherButtonClick(View view)
     {
-        startActivity(new Intent(this, TeacherRegisterDetails.class));
+        startActivity(new Intent(this, TeacherSignin.class));
 
     }
 }

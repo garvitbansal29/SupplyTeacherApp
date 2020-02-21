@@ -10,6 +10,10 @@ import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.BufferedReader;
+import java.io.StringReader;
+import java.util.Scanner;
+
 
 public class TeacherRegisterDetails extends AppCompatActivity {
     String email = "";
@@ -57,17 +61,30 @@ public class TeacherRegisterDetails extends AppCompatActivity {
         DBS = dbs_checkBox.isChecked();
         String stringYearsOfExperience = yearsOfExperience_field.getText().toString();
         yearsOfExperience = Integer.valueOf(stringYearsOfExperience);
-        subjects = subjects_field.getText().toString();
+//        subjects = subjects_field.getText().toString();
+
 
         TeacherAccount teacherAccount = new TeacherAccount(teacherName, postcode, addressLine1, addressLine2, town, county, phone, email, drivingLicense, yearsOfExperience, DBS);
         database.addTeacherDetails(teacherAccount, username);
 
+        addSubjectList();
         startActivity(new Intent(this, TeacherHome.class));
 
     }
 
-    public void addSubjectList(EditText subjectsListField)
+    public void addSubjectList()
     {
+        subjects = subjects_field.getText().toString();
+
+        Scanner scanner = new Scanner(subjects);
+
+        while(scanner.hasNextLine())
+        {
+            String subject = scanner.nextLine();
+            database.addTeacherSubjects(username, subject);
+        }
+        scanner.close();
+
 
 
     }
