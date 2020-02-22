@@ -30,7 +30,7 @@ public class SchoolRegisterDetail extends AppCompatActivity {
         addressLine2_field = findViewById(R.id.addressLine2_field);
         town_field = findViewById(R.id.town_field);
         county_field = findViewById(R.id.county_field);
-        phone_field = findViewById(R.id.phoneNumber_field);
+        phone_field = findViewById(R.id.phone_field);
 
 
     }
@@ -48,6 +48,7 @@ public class SchoolRegisterDetail extends AppCompatActivity {
         phone = phone_field.getText().toString();
 
         School school = new School(username, schoolName, postcode, addressLine1, addressLine2, town, county, phone, email);
+
         database.addSchool(school, username);
 
         startActivity(new Intent(this, SchoolHome.class));
