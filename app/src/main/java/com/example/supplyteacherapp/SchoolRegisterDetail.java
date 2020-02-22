@@ -2,6 +2,7 @@ package com.example.supplyteacherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -29,11 +30,7 @@ public class SchoolRegisterDetail extends AppCompatActivity {
         addressLine2_field = findViewById(R.id.addressLine2_field);
         town_field = findViewById(R.id.town_field);
         county_field = findViewById(R.id.county_field);
-        phone_field = findViewById(R.id.phoneNumber_field);
-        //drivingLicense_checkBox = findViewById(R.id.drivingLicense_checkBox);
-        //dbs_checkBox = findViewById(R.id.DBS_checkBox);
-        //yearsOfExperience_field = findViewById(R.id.yearsOfExperience_field);
-        //subjects_field = findViewById(R.id.subjects_field);
+        phone_field = findViewById(R.id.phone_field);
 
 
     }
@@ -49,16 +46,11 @@ public class SchoolRegisterDetail extends AppCompatActivity {
         town = town_field.getText().toString();
         county = county_field.getText().toString();
         phone = phone_field.getText().toString();
-        //drivingLicense = drivingLicense_checkBox.isChecked();
-        //DBS = dbs_checkBox.isChecked();
-        //String stringYearsOfExperience = yearsOfExperience_field.getText().toString();
-        //yearsOfExperience = new Integer(stringYearsOfExperience).intValue();
-        //subjects = subjects_field.getText().toString();
 
-//        phone= phone_field.getText().toString();
-////        email= email_field.getText().toString();
-//        School school = new School(name, address, phone);
-//        database.addSchoolDetailsWithSchoolClass(username, school);
-//        startActivity(new Intent(this, SchoolHome.class));
+        School school = new School(username, schoolName, postcode, addressLine1, addressLine2, town, county, phone, email);
+
+        database.addSchool(school, username);
+
+        startActivity(new Intent(this, SchoolHome.class));
     }
 }

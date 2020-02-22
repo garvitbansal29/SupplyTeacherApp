@@ -1,35 +1,20 @@
 package com.example.supplyteacherapp;
 
-public class School {
-    private  String  schoolName, address, phone;
+public class School extends Account {
 
-    public School(String schoolName, String address, String phone) {
+    String schoolName;
+
+    public School(String accountName, String schoolName, String postcode, String addressLine1, String addressLine2, String town, String county, String phone, String emailAddress) {
+        super(accountName, postcode, addressLine1, addressLine2, town, county, phone, emailAddress);
         this.schoolName = schoolName;
-        this.address = address;
-        this.phone = phone;
     }
 
-    public String getschoolName() {
+    public String getSchoolName() {
         return schoolName;
     }
 
-    public void setschoolName(String schoolName) {
+    public void setSchoolNameName(String schoolName) {
         this.schoolName = schoolName;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }

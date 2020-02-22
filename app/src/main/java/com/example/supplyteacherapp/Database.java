@@ -100,6 +100,11 @@ public class Database {
         mDatabase.child("Teacher").child(teacherID).setValue(teacher);
     }
 
+    public void addSchool(School s, String schoolID)
+    {
+        mDatabase.child("School").child(schoolID).setValue(s);
+    }
+
 
     public void  updateUIOnSignIn(FirebaseUser account, Class nextActivityContext){
         if(account != null){
