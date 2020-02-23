@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 
 public class Database {
 
@@ -132,5 +134,57 @@ public class Database {
     public void addTeacherSubjects(String userID, String subject)
     {
         mDatabase.child("TeacherLanguages").child(userID).push().setValue(subject);
+    }
+
+
+    public ArrayList getTeachersBySubjects(final String subject)
+    {
+        final ArrayList <String> teacherList = new ArrayList<>();
+        //Connects to the table
+        mDatabase.child("TeacherLanguages").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                //Loops though every Teacher in the above table
+                for (final DataSnapshot snapshot1 : dataSnapshot.getChildren())
+                {
+                    //Set teacher ID
+                    final String teacherID = snapshot1.getKey();
+
+
+                    //Loop through every subject under the specific teacher
+                    mDatabase.child("TeacherLanguages").child(teacherID).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (final DataSnapshot snapshot2 : dataSnapshot.getChildren() )
+                            {
+                                String teacherSubject = snapshot2.getValue().toString();
+                                //Checks if the teacher teaches the desired subject and returns the teacherID if true
+                                if(subject.equals(teacherSubject))
+                                {
+                                    System.out.println("THIS IS THE ONE" + teacherID);
+                                    teacherList.add(teacherID);
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+//                    System.out.println("------------------------------------------------------------");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return teacherList;
     }
 }

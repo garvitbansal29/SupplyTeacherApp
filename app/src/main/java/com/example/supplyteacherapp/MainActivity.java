@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void schoolButtonClick(View view)
     {
-        startActivity(new Intent(this, SchoolSignin.class));
+        startActivity(new Intent(this, School_SearchTeacher.class));
 
 
     }
