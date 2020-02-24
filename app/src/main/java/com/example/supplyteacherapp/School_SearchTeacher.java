@@ -16,6 +16,6 @@ public class School_SearchTeacher extends AppCompatActivity {
 
     public void onclickBtn(View view)
     {
-        database.getTeachersBySubjects("mathematics");
+        database.getTeachersBySubjects("Science");
     }
 }
