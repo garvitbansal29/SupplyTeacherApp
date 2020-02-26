@@ -13,6 +13,9 @@ public class TeacherAccount extends Account {
         this.dbs = dbs;
     }
 
+    public TeacherAccount() {
+    }
+
     public boolean isDrivingLicense() {
         return drivingLicense;
     }

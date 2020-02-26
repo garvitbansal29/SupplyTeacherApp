@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class School_SearchTeacher extends AppCompatActivity {
-    Database database = new Database(this);
+    TeacherDB teacherDb = new TeacherDB();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,77 @@ public class School_SearchTeacher extends AppCompatActivity {
 
     public void onclickBtn(View view)
     {
-        database.getTeachersBySubjects("Science");
+
+
+
+        teacherDb.getTeacherObjsBySubject("mathematics", new OnGetTeacherDataListener() {
+            @Override
+            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
+
+            }
+
+            @Override
+            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+                for (TeacherAccount t : teacherAccount)
+                {
+                    System.out.println(t.getAccountName());
+                }
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+
+        teacherDb.getTeacherObjsByYearsOfExperience(5454, new OnGetTeacherDataListener() {
+            @Override
+            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
+
+            }
+
+            @Override
+            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+                System.out.println(teacherAccount.size());
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+        teacherDb.getTeacherObjsByDrivingLicense(true, new OnGetTeacherDataListener() {
+            @Override
+            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
+
+            }
+
+            @Override
+            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+                System.out.println(teacherAccount.size() + " have Driving License");
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+
     }
+
 }

@@ -15,6 +15,9 @@ public abstract class Account {
         this.emailAddress = emailAddress;
     }
 
+    public Account() {
+    }
+
     public String getAccountName() {
         return accountName;
     }
