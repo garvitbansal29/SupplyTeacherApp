@@ -7,14 +7,37 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.maps.errors.ApiException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class TeacherDB {
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    DistanceCalculator distanceCalculator = new DistanceCalculator();
 
 
+    public void getAllTeachers(final OnGetTeacherDataListener listener)
+    {
+        mDatabase.child("Teacher").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final ArrayList<TeacherAccount> allTeachers = new ArrayList<>();
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    TeacherAccount teacherAccount = snapshot.getValue(TeacherAccount.class);
+                    allTeachers.add(teacherAccount);
+                }
+                listener.onSuccessTeacherObj(allTeachers);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
     public void getTeacherIdsBySubject(final String subject, final OnGetTeacherDataListener listener )
@@ -221,6 +244,58 @@ public class TeacherDB {
 
             }
         });
+
+    }
+    public ArrayList<TeacherAccount> getTeacherInRadius(String SchoolPostCode, double maxDistance)
+    {
+        ArrayList<TeacherAccount> teachers = new ArrayList<>();
+
+
+        getAllTeachers(new OnGetTeacherDataListener() {
+            @Override
+            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
+
+            }
+
+            @Override
+            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+
+                for (TeacherAccount teacherAcc : teacherAccount)
+                {
+                    String teacherPostCode = "";
+                    teacherPostCode = teacherAcc.getPostcode();
+
+                    double teacherDistance = 0;
+                    try {
+                        teacherDistance = distanceCalculator.getDrivingDist(teacherPostCode, SchoolPostCode);
+                    } catch (ApiException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if(teacherDistance <= maxDistance)
+                    {
+                        teachers.add(teacherAcc);
+                    }
+
+
+                }
+
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+        return teachers;
 
     }
 

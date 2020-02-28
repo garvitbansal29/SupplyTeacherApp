@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.maps.errors.ApiException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class School_SearchTeacher extends AppCompatActivity {
     TeacherDB teacherDb = new TeacherDB();
+    DistanceCalculator distance = new DistanceCalculator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,51 @@ public class School_SearchTeacher extends AppCompatActivity {
 
             }
         });
+
+        teacherDb.getAllTeachers(new OnGetTeacherDataListener() {
+            @Override
+            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
+
+            }
+
+            @Override
+            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+                System.out.println("There are this many  teachers ___ " + teacherAccount.size());
+
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+
+    }
+
+
+    public void button2Click(View view)
+    {
+        try {
+            double dist = distance.getDrivingDist("sk7 3nb", "sk7 2jt");
+            System.out.println(dist);
+        } catch (ApiException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<TeacherAccount> teachersInArea = teacherDb.getTeacherInRadius("sk7 3nb", 30);
+        for (TeacherAccount teacherInArea : teachersInArea) {
+
+        }
+        System.out.println("this is how many teachers are in area right now " + teachersInArea.size());
 
     }
 
