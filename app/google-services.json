@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "412275984215",
+    "firebase_url": "https://supplyedfirebase.firebaseio.com",
+    "project_id": "supplyedfirebase",
+    "storage_bucket": "supplyedfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412275984215:android:5c305ff5fa07f55a28a012",
+        "android_client_info": {
+          "package_name": "com.example.supplyteacherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412275984215-qf1n765t4ifpl1m3j6ivu7gh2h60f4bj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.supplyteacherapp",
+            "certificate_hash": "4407da1d040f568bf7347e731cfd57bed593e014"
+          }
+        },
+        {
+          "client_id": "412275984215-1aklema05l1k4vdbnb33khahih1ppgtm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNb4l7-h7PXCbt-iXcxmHnM68P8g6OUR4"
+
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412275984215-1aklema05l1k4vdbnb33khahih1ppgtm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
