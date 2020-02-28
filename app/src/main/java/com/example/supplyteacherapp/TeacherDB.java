@@ -246,9 +246,9 @@ public class TeacherDB {
         });
 
     }
-    public ArrayList<TeacherAccount> getTeacherInRadius(String SchoolPostCode, double maxDistance)
+    public void getTeacherInRadius(String SchoolPostCode, double maxDistance , OnGetTeacherDataListener listener)
     {
-        ArrayList<TeacherAccount> teachers = new ArrayList<>();
+
 
 
         getAllTeachers(new OnGetTeacherDataListener() {
@@ -260,6 +260,7 @@ public class TeacherDB {
             @Override
             public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
 
+                ArrayList<TeacherAccount> teachers = new ArrayList<>();
                 for (TeacherAccount teacherAcc : teacherAccount)
                 {
                     String teacherPostCode = "";
@@ -283,6 +284,8 @@ public class TeacherDB {
 
                 }
 
+                listener.onSuccessTeacherObj(teachers);
+
             }
 
             @Override
@@ -295,7 +298,7 @@ public class TeacherDB {
 
             }
         });
-        return teachers;
+//        return teachers;
 
     }
 

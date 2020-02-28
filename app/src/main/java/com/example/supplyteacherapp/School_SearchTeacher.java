@@ -132,11 +132,30 @@ public class School_SearchTeacher extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ArrayList<TeacherAccount> teachersInArea = teacherDb.getTeacherInRadius("sk7 3nb", 30);
-        for (TeacherAccount teacherInArea : teachersInArea) {
+        teacherDb.getTeacherInRadius("sk7 3nb", 1, new OnGetTeacherDataListener() {
+            @Override
+            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
 
-        }
-        System.out.println("this is how many teachers are in area right now " + teachersInArea.size());
+            }
+
+            @Override
+            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+
+                System.out.println("this is how many teachers are in area right now " + teacherAccount.size());
+
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+//
 
     }
 
