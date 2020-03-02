@@ -2,8 +2,10 @@ package com.example.supplyteacherapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -46,13 +48,30 @@ public class School_SearchTeacher extends AppCompatActivity {
             @Override
             public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
                 ArrayAdapter arrayAdapter = new ArrayAdapter(School_SearchTeacher.this, android.R.layout.simple_expandable_list_item_1, teacherAccount);
+                //arrayAdapter.addAll(teacherAccount);
+                ArrayList<String> names = new ArrayList<>();
                 for (TeacherAccount t : teacherAccount)
                 {
                     System.out.println(t.getAccountName());
-                    arrayAdapter.add(t.getAccountName());
+                    names.add(t.getAccountName() + ", " + t.getTown() + " Click to invite");
 
                 }
+                arrayAdapter.addAll(names);
                 listView.setAdapter(arrayAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adpterView, View view, int position, long id) {
+
+                        for (int i = 0; i < listView.getChildCount(); i++) {
+                            if(position == i ){
+                                listView.getChildAt(i).setBackgroundColor(Color.RED);
+                            }else{
+                                listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                            }
+                        }
+                    }
+                });
             }
 
             @Override
