@@ -44,8 +44,13 @@ public class TeacherHome extends AppCompatActivity {
         return availableDates;
     }
 
-    private void on_setAvailabilityClick(View v)
+    public void setDates_onClick(View v)
     {
+        for (Date d : setAvailability())
+        {
+            System.out.println(d);
+        }
+
         calendar.highlightDates(setAvailability());
     }
 }
