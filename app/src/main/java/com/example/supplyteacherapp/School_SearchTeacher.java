@@ -53,19 +53,21 @@ public class School_SearchTeacher extends AppCompatActivity {
                 for (TeacherAccount t : teacherAccount)
                 {
                     System.out.println(t.getAccountName());
-                    names.add(t.getAccountName() + ", " + t.getTown() + " Click to invite");
+                    names.add(t.getAccountName() + ", " + t.getTown() + ". " + t.getPostcode());
 
                 }
+
                 arrayAdapter.addAll(names);
                 listView.setAdapter(arrayAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                    @Override
+                    @Override       //change the color of the background on selected search result
                     public void onItemClick(AdapterView<?> adpterView, View view, int position, long id) {
 
                         for (int i = 0; i < listView.getChildCount(); i++) {
                             if(position == i ){
                                 listView.getChildAt(i).setBackgroundColor(Color.RED);
+
                             }else{
                                 listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
                             }

@@ -5,11 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TeacherHome">
+
+
+    <com.squareup.timessquare.CalendarPickerView
+        android:id="@+id/calendar_view"
+        android:layout_width="364dp"
+        android:layout_height="342dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="249dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="58dp"
+        app:layout_constraintBottom_toTopOf="@+id/setAvailBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="84dp"
         android:text="Welcome to your home page (name)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,21 +35,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="123dp"
-        android:layout_marginRight="123dp"
         android:layout_marginBottom="48dp"
         android:text="Set Availability"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_view" />
 
     <Button
         android:id="@+id/searchJobsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="61dp"
-        android:layout_marginLeft="61dp"
         android:layout_marginTop="49dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
         android:text="Search Jobs"
         app:layout_constraintEnd_toStartOf="@+id/myJobsBtn"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,20 +58,9 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginEnd="77dp"
-        android:layout_marginRight="77dp"
         android:text="My Jobs"
         app:layout_constraintBaseline_toBaselineOf="@+id/searchJobsBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/searchJobsBtn" />
-
-    <CalendarView
-        android:id="@+id/calendarView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="37dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myJobsBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

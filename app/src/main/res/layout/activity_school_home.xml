@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgrnd"
     tools:context=".SchoolHome">
     <TextView
         android:id="@+id/textView5"
@@ -24,6 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="54dp"
         android:text="Search Teachers"
+        android:background="@drawable/custom_btn"
+        android:textColor="#59a7e3"
+
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.436"

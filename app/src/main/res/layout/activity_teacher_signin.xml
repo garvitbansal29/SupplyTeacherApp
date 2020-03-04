@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgrnd"
     tools:context=".TeacherSignin">
 
     <TextView
@@ -46,6 +47,8 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="21dp"
         android:onClick="signInBtnClick"
+        android:background="@drawable/custom_btn"
+        android:textColor="#59a7e3"
         android:text="SignIn"
         app:layout_constraintEnd_toEndOf="@+id/shool_register_text_link"
         app:layout_constraintTop_toBottomOf="@+id/password_field" />

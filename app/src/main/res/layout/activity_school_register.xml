@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgrnd"
     tools:context=".SchoolRegister">
     <EditText
         android:id="@+id/email_field"
@@ -46,6 +47,8 @@
         android:layout_marginTop="51dp"
         android:onClick="registerSchoolOnClick"
         android:text="Register"
+        android:background="@drawable/custom_btn"
+        android:textColor="#59a7e3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_field" />

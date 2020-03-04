@@ -4,134 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bkgrnd"
     tools:context=".SchoolRegisterDetail">
 
-    <EditText
-        android:id="@+id/name_field"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="19dp"
-        android:ems="10"
-        android:hint="Name "
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/schoolInput"
-        app:layout_constraintEnd_toStartOf="@+id/schoolInput"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/schoolInput"
-        android:layout_width="173dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="119dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="22dp"
-        android:ems="10"
-        android:hint="School Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/addressLine1_field"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/name_field"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/addressLine1_field"
-        android:layout_width="384dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="187dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="238dp"
-        android:ems="10"
-        android:hint="Address Line 1"
-        android:inputType="textPersonName"
+        android:layout_height="0dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="75dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/submitBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/addressLine2_field"
-        android:layout_width="383dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="22dp"
-        android:ems="10"
-        android:hint="Address Line 2"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/county_field"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressLine1_field" />
+        <EditText
+            android:id="@+id/schoolInput"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="School Name"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/town_field"
-        android:layout_width="171dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="26dp"
-        android:ems="10"
-        android:hint="Town"
-        android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/county_field"
-        app:layout_constraintEnd_toStartOf="@+id/county_field"
-        app:layout_constraintStart_toStartOf="parent" />
+        <EditText
+            android:id="@+id/name_field"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Name "
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/county_field"
-        android:layout_width="168dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:hint="County"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/postcode_field"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/town_field"
-        app:layout_constraintTop_toBottomOf="@+id/addressLine2_field" />
+        <EditText
+            android:id="@+id/phone_field"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Phone  "
+            android:inputType="phone" />
 
-    <EditText
-        android:id="@+id/postcode_field"
-        android:layout_width="173dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="314dp"
-        android:ems="10"
-        android:hint="Postcode"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/phone_field"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/county_field" />
+        <EditText
+            android:id="@+id/addressLine1_field"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Address Line 1"
+            android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/phone_field"
-        android:layout_width="166dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="312dp"
-        android:ems="10"
-        android:hint="Phone  "
-        android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/postcode_field"
-        app:layout_constraintTop_toBottomOf="@+id/addressLine1_field"
-        app:layout_constraintVertical_bias="1.0" />
+        <EditText
+            android:id="@+id/addressLine2_field"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Address Line 2"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/town_field"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Town"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/county_field"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="County"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/postcode_field"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Postcode"
+            android:inputType="textPersonName" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="212dp"
+        android:layout_marginBottom="93dp"
+        android:background="@drawable/custom_btn"
         android:onClick="registerSchoolDetailsOnClick"
         android:text="Submit"
+        android:textColor="#59a7e3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressLine1_field" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
