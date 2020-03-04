@@ -13,6 +13,7 @@ import android.widget.ListView;
 import com.google.maps.errors.ApiException;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class School_SearchTeacher extends AppCompatActivity {
@@ -50,10 +51,12 @@ public class School_SearchTeacher extends AppCompatActivity {
                 ArrayAdapter arrayAdapter = new ArrayAdapter(School_SearchTeacher.this, android.R.layout.simple_expandable_list_item_1, teacherAccount);
                 //arrayAdapter.addAll(teacherAccount);
                 ArrayList<String> names = new ArrayList<>();
+                ArrayList<TeacherAccount> testList = new ArrayList<>();
                 for (TeacherAccount t : teacherAccount)
                 {
                     System.out.println(t.getAccountName());
                     names.add(t.getAccountName() + ", " + t.getTown() + ". " + t.getPostcode());
+                    testList.add(t);
 
                 }
 
@@ -66,7 +69,7 @@ public class School_SearchTeacher extends AppCompatActivity {
 
                         for (int i = 0; i < listView.getChildCount(); i++) {
                             if(position == i ){
-                                listView.getChildAt(i).setBackgroundColor(Color.RED);
+                                listView.getChildAt(i).setBackgroundColor(Color.parseColor("#78C1F9"));
 
                             }else{
                                 listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);

@@ -32,15 +32,16 @@ public class TeacherHome extends AppCompatActivity {
 
     private ArrayList<Date> setAvailability(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
-        String dateInString = "04-03-2020";
-        Date date = null;
-        try {
-            date = sdf.parse(dateInString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String dateInString = "07-03-2020";
+
+        //Date date = null;
+//        try {
+//            //date = sdf.parse(dateInString);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         ArrayList<Date> availableDates = new ArrayList<>();
-        availableDates.add(date);
+        availableDates.addAll(calendar.getSelectedDates());
         return availableDates;
     }
 
