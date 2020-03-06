@@ -32,15 +32,17 @@ public class School_SearchTeacher extends AppCompatActivity {
 
         subjectInput = (EditText) findViewById(R.id.subjectSearch);
         listView = (ListView) findViewById(R.id.myList);
+
+
     }
 
     public void onclickBtn(View view)
     {
 
-        String search = subjectInput.getText().toString();
+        String subjectText = subjectInput.getText().toString();
 
 
-        teacherDb.getTeacherObjsBySubject(search, new OnGetTeacherDataListener() {
+        teacherDb.getTeacherObjsBySubject(subjectText, new OnGetTeacherDataListener() {
             @Override
             public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
 
@@ -48,8 +50,9 @@ public class School_SearchTeacher extends AppCompatActivity {
 
             @Override
             public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
-                ArrayAdapter arrayAdapter = new ArrayAdapter(School_SearchTeacher.this, android.R.layout.simple_expandable_list_item_1, teacherAccount);
-                //arrayAdapter.addAll(teacherAccount);
+
+                ArrayAdapter<TeacherAccount> arrayAdapter = new ArrayAdapter<>(School_SearchTeacher.this, android.R.layout.simple_expandable_list_item_1, teacherAccount);
+
                 ArrayList<String> names = new ArrayList<>();
                 ArrayList<TeacherAccount> testList = new ArrayList<>();
                 for (TeacherAccount t : teacherAccount)
@@ -60,7 +63,7 @@ public class School_SearchTeacher extends AppCompatActivity {
 
                 }
 
-                arrayAdapter.addAll(names);
+//                arrayAdapter.addAll(names);
                 listView.setAdapter(arrayAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -90,113 +93,11 @@ public class School_SearchTeacher extends AppCompatActivity {
             }
         });
 
-        teacherDb.getTeacherObjsByYearsOfExperience(5454, new OnGetTeacherDataListener() {
-            @Override
-            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
-
-            }
-
-            @Override
-            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
-                System.out.println(teacherAccount.size());
-            }
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onFailure() {
-
-            }
-        });
-        teacherDb.getTeacherObjsByDrivingLicense(true, new OnGetTeacherDataListener() {
-            @Override
-            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
-
-            }
-
-            @Override
-            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
-                System.out.println(teacherAccount.size() + " have Driving License");
-            }
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onFailure() {
-
-            }
-        });
-
-        teacherDb.getAllTeachers(new OnGetTeacherDataListener() {
-            @Override
-            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
-
-            }
-
-            @Override
-            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
-                System.out.println("There are this many  teachers ___ " + teacherAccount.size());
-
-            }
-
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onFailure() {
-
-            }
-        });
 
     }
 
 
-    public void button2Click(View view) {
-        try {
-            double dist = distance.getDrivingDist("sk7 3nb", "sk7 2jt");
-            System.out.println(dist);
-        } catch (ApiException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        teacherDb.getTeacherInRadius("sk7 3nb", 1, new OnGetTeacherDataListener() {
-            @Override
-            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
-
-            }
-
-            @Override
-            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
-
-                System.out.println("this is how many teachers are in area right now " + teacherAccount.size());
-
-            }
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onFailure() {
-
-            }
-        });
-
-    }
 }
 
 
