@@ -11,6 +11,7 @@ import com.google.maps.errors.ApiException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class TeacherDB {
@@ -301,6 +302,33 @@ public class TeacherDB {
 //        return teachers;
 
     }
+
+    public void getTeacherCurrentSetDates(String teacherID, Ong listener)
+    {
+        listener.onStart();
+        mDatabase.child("TeacherAvailability").child(teacherID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                ArrayList<String> setDates = new ArrayList<>();
+                for (final DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    String workingDate = snapshot.getValue().toString();
+                    setDates.add(workingDate);
+                }
+                listener.onSuccessDates(setDates);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
 
 
 }

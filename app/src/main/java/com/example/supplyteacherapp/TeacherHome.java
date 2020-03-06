@@ -6,15 +6,22 @@ import android.view.View;
 
 import com.squareup.timessquare.CalendarPickerView;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Locale;
 
 public class TeacherHome extends AppCompatActivity {
 
     private CalendarPickerView calendar;
+    Database database = new Database(this);
+    TeacherDB teacherDB = new TeacherDB();
+    ArrayList<String> setDates = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +37,76 @@ public class TeacherHome extends AppCompatActivity {
 
     }
 
-    private ArrayList<Date> setAvailability(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
-        String dateInString = "07-03-2020";
+    private ArrayList<Date> getSelectedDates(){
+        return new ArrayList<>(calendar.getSelectedDates());
 
-        //Date date = null;
-//        try {
-//            //date = sdf.parse(dateInString);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-        ArrayList<Date> availableDates = new ArrayList<>();
-        availableDates.addAll(calendar.getSelectedDates());
-        return availableDates;
+    }
+
+
+    private ArrayList<String> getSelectedStringDates(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+        ArrayList<String> selectedStringDates = new ArrayList<>();
+
+        ArrayList<Date> selectedDates = getSelectedDates();
+        for(Date d : selectedDates)
+        {
+            selectedStringDates.add(dateFormat.format(d).toString());
+        }
+        return selectedStringDates;
+
+    }
+
+    private Date convertToDate(String strDate)  {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+
+
+        try {
+            return dateFormat.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return  null;
+
     }
 
     public void setDates_onClick(View v)
     {
-        for (Date d : setAvailability())
-        {
-            System.out.println(d);
-        }
+//        getSetDates("3U8XYv26TXYT7eTCSkr5FKDJTt63");
+        teacherDB.getTeacherCurrentSetDates("3U8XYv26TXYT7eTCSkr5FKDJTt63", new Ong() {
+            @Override
+            public void onStart() {
 
-        calendar.highlightDates(setAvailability());
+            }
+
+            @Override
+            public void onSuccessDates(ArrayList<String> currentSetDates) {
+                for(String selectedDate: getSelectedStringDates())
+                {
+                    boolean dateRepeat = false;
+
+                    for (String setDate : currentSetDates)
+                    {
+                        if(selectedDate.equals(setDate))
+                        {
+                            dateRepeat = true;
+                        }
+
+                    }
+                    if(!dateRepeat)
+                    {
+                        database.addTeacherAvailability("3U8XYv26TXYT7eTCSkr5FKDJTt63",selectedDate);
+                    }
+                    else
+                    {
+                        System.out.println("not done");
+                    }
+                }
+            }
+        });
+        calendar.highlightDates(getSelectedDates());
+
     }
+
+
 }
