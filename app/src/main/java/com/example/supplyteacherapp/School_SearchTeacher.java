@@ -10,10 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.google.maps.errors.ApiException;
-
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class School_SearchTeacher extends AppCompatActivity {
@@ -51,35 +47,19 @@ public class School_SearchTeacher extends AppCompatActivity {
             @Override
             public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
 
-                ArrayAdapter<TeacherAccount> arrayAdapter = new ArrayAdapter<>(School_SearchTeacher.this, android.R.layout.simple_expandable_list_item_1, teacherAccount);
-
-                ArrayList<String> names = new ArrayList<>();
-                ArrayList<TeacherAccount> testList = new ArrayList<>();
-                for (TeacherAccount t : teacherAccount)
-                {
-                    System.out.println(t.getAccountName());
-                    names.add(t.getAccountName() + ", " + t.getTown() + ". " + t.getPostcode());
-                    testList.add(t);
-
-                }
-
-//                arrayAdapter.addAll(names);
-                listView.setAdapter(arrayAdapter);
+                TeacherListAdapter adapter = new TeacherListAdapter(School_SearchTeacher.this, R.layout.adapter_view_layout, teacherAccount);
+                listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                    @Override       //change the color of the background on selected search result
-                    public void onItemClick(AdapterView<?> adpterView, View view, int position, long id) {
+                        
 
-                        for (int i = 0; i < listView.getChildCount(); i++) {
-                            if(position == i ){
-                                listView.getChildAt(i).setBackgroundColor(Color.parseColor("#78C1F9"));
-
-                            }else{
-                                listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                            }
-                        }
                     }
                 });
+
+
+
             }
 
             @Override

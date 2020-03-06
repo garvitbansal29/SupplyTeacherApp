@@ -18,6 +18,11 @@ public abstract class Account {
     public Account() {
     }
 
+    public Account(String accountName, String postcode) {
+        this.accountName = accountName;
+        this.postcode = postcode;
+    }
+
     public String getAccountName() {
         return accountName;
     }

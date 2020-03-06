@@ -16,6 +16,11 @@ public class TeacherAccount extends Account {
     public TeacherAccount() {
     }
 
+    public TeacherAccount(String accountName, String postcode, int yearsOfExperience) {
+        super(accountName, postcode);
+        this.yearsOfExperience = yearsOfExperience;
+    }
+
     public boolean isDrivingLicense() {
         return drivingLicense;
     }
