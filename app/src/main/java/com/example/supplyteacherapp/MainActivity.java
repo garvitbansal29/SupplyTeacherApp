@@ -13,19 +13,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     public void schoolButtonClick(View view)
     {
-        startActivity(new Intent(this, School_SearchTeacher.class));
+        startActivity(new Intent(this, SchoolSignin.class));
 
 
     }
     public void teacherButtonClick(View view)
     {
-        startActivity(new Intent(this, TeacherRegister.class));
+        startActivity(new Intent(this, TeacherSignin.class));
 
     }
 }

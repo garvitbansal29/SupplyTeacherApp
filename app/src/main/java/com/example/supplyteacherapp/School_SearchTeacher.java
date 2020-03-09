@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ public class School_SearchTeacher extends AppCompatActivity {
 
     EditText subjectInput;
     ListView listView;
+
 
 
 
@@ -37,8 +39,10 @@ public class School_SearchTeacher extends AppCompatActivity {
 
         String subjectText = subjectInput.getText().toString();
 
+        ArrayList<TeacherAccount> newTeach = new ArrayList<>();
+        OnGetTeacherDataListener oneget = new OnGetTeacherDataListener() {
 
-        teacherDb.getTeacherObjsBySubject(subjectText, new OnGetTeacherDataListener() {
+
             @Override
             public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
 
@@ -46,18 +50,12 @@ public class School_SearchTeacher extends AppCompatActivity {
 
             @Override
             public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
-
-                TeacherListAdapter adapter = new TeacherListAdapter(School_SearchTeacher.this, R.layout.adapter_view_layout, teacherAccount);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                        
-
-                    }
-                });
-
+                System.out.println("TESTING_________________");
+                System.out.println(teacherAccount.size());
+                for (TeacherAccount t : teacherAccount)
+                {
+                    System.out.println(t.getAccountName());
+                }
 
 
             }
@@ -71,10 +69,65 @@ public class School_SearchTeacher extends AppCompatActivity {
             public void onFailure() {
 
             }
-        });
+        };
+
+        teacherDb.getTeacherInRadius("sk7 2jt", 5, oneget);
+        teacherDb.getTeacherObjsBySubject("Mathematics", oneget);
+
+        System.out.println("PEASE BE WORKING  "+ newTeach.size());
+
+
+//        teacherDb.getTeacherObjsBySubject(subjectText, new OnGetTeacherDataListener() {
+//            @Override
+//            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
+//
+//            }
+//
+//            @Override
+//            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+//
+//                gloablTeacherBySubject = teacherAccount;
+//                displayListView();
+//
+//
+//            }
+//
+//            @Override
+//            public void onStart() {
+//
+//            }
+//
+//            @Override
+//            public void onFailure() {
+//
+//            }
+//        });
+
 
 
     }
+
+//    public void displayListView()
+//    {
+//        TeacherListAdapter adapter = new TeacherListAdapter(School_SearchTeacher.this, R.layout.adapter_view_layout, gloablTeacherBySubject);
+//        listView.setAdapter(adapter);
+//
+//
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//            @Override       //change the color of the background on selected search result
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//
+//                TeacherAccount t = adapter.getItem(position);
+//                System.out.println(t.getAccountName());
+//
+//            }
+//        });
+//
+//    }
+
+
+
 
 
 

@@ -28,10 +28,10 @@
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="27dp"
-        android:onClick="button2Click"
-        android:textColor="#59a7e3"
         android:background="@drawable/custom_btn"
+        android:onClick="testingSomething"
         android:text="Button2"
+        android:textColor="#59a7e3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/subjectSearch" />

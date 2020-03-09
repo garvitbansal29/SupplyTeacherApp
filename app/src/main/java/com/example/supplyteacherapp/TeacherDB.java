@@ -222,6 +222,7 @@ public class TeacherDB {
     {
         listener.onStart();
         mDatabase.child("Teacher").addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<TeacherAccount> teacherAccounts = new ArrayList<>();
