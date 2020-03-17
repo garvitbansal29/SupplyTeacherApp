@@ -138,9 +138,8 @@ public class Database {
 
     }
 
-
-
-
-
-
+    public void addTeacherJobInvite(String teacherID, String schoolID)
+    {
+        mDatabase.child("teacherJob").child(teacherID).push().setValue(schoolID);
+    }
 }

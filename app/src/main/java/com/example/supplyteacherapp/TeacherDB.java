@@ -74,7 +74,6 @@ public class TeacherDB {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 }
             });
     }
@@ -157,6 +156,42 @@ public class TeacherDB {
             }
         });
     }
+    public void getTeacherObjsBySubject2 (String subject, OnGetTeacherDataListener listener)
+    {
+        mDatabase.child("TeacherLanguages")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
+                        ArrayList <TeacherAccount> teacherObjListBySubj = new ArrayList<>();
+
+                        //Loops though every Teacher in the above table
+                        for (final DataSnapshot snapshot1 : dataSnapshot.getChildren())
+                        {
+                            //Set teacher ID
+                            final String teacherID = snapshot1.getKey();
+
+                            for( final DataSnapshot snapshot2 : snapshot1.getChildren())
+                            {
+                                String teacherSubject = Objects.requireNonNull(snapshot2.getValue()).toString();
+                                //Checks if the teacher teaches the desired subject and returns the teacherID if true
+                                if(subject.equals(teacherSubject))
+                                {
+
+
+                                }
+                            }
+                        }
+                        System.out.println("this is a new list 8:" + teacherObjListBySubj.size());
+
+                        listener.onSuccessTeacherObj(teacherObjListBySubj);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+    }
+
 
     public void getTeacherObjsByYearsOfExperience(final int yearOfExp, final OnGetTeacherDataListener listener)
     {
@@ -220,12 +255,14 @@ public class TeacherDB {
 
     public void getTeacherObjsByDBS(final boolean dbs, final OnGetTeacherDataListener listener)
     {
+        ArrayList<TeacherAccount> teacherAccounts = new ArrayList<>();
+        ArrayList<TeacherAccount> results = new ArrayList<>();
+
+
         listener.onStart();
         mDatabase.child("Teacher").addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<TeacherAccount> teacherAccounts = new ArrayList<>();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
 
@@ -234,10 +271,7 @@ public class TeacherDB {
                     {
                         teacherAccounts.add(teacherAccount);
                     }
-
-
                 }
-                listener.onSuccessTeacherObj(teacherAccounts);
             }
 
             @Override
@@ -250,9 +284,6 @@ public class TeacherDB {
     }
     public void getTeacherInRadius(String SchoolPostCode, double maxDistance , OnGetTeacherDataListener listener)
     {
-
-
-
         getAllTeachers(new OnGetTeacherDataListener() {
             @Override
             public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
@@ -300,18 +331,85 @@ public class TeacherDB {
 
             }
         });
-//        return teachers;
 
     }
 
+
+
+
+    public void getAllReleventTeachers(String subject, int yearsOfExperience, boolean checkDrivingLicense, boolean checkDBS, String schoolPostCode, int maxTeacherDist, OnGetTeacherDataListener listener )
+    {
+        getTeacherObjsBySubject(subject, new OnGetTeacherDataListener() {
+            @Override
+            public void onSuccessTeacherID(ArrayList<String> teacherIDs) {
+
+            }
+
+            @Override
+            public void onSuccessTeacherObj(ArrayList<TeacherAccount> teacherAccount) {
+                System.out.println("this is a list 10: " +teacherAccount.size());
+                ArrayList<TeacherAccount> result = new ArrayList<>();
+
+                for(TeacherAccount t: teacherAccount)
+                {
+                    String teacherPostCode = "";
+                    teacherPostCode = t.getPostcode();
+
+                    double teacherDistance = 0;
+                    try {
+                        teacherDistance = distanceCalculator.getDrivingDist(teacherPostCode, schoolPostCode);
+                    } catch (ApiException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    if(t.getYearsOfExperience()>=yearsOfExperience && teacherDistance <=maxTeacherDist)
+                    {
+                        if(!checkDBS || t.isDbs())
+                        {
+                            if(!checkDrivingLicense || t.isDrivingLicense())
+                            {
+                                result.add(t);
+                            }
+
+                        }
+                    }
+                }
+                System.out.println("list 1 : " + result.size());
+                listener.onSuccessTeacherObj(result);
+
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+
+    }
+
+
+
+
+
     public void getTeacherCurrentSetDates(String teacherID, Ong listener)
     {
+        ArrayList<String> setDates = new ArrayList<>();
+        ArrayList<String> subject = new ArrayList<>();
         listener.onStart();
         mDatabase.child("TeacherAvailability").child(teacherID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                ArrayList<String> setDates = new ArrayList<>();
+
                 for (final DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
                     String workingDate = snapshot.getValue().toString();
@@ -326,10 +424,5 @@ public class TeacherDB {
 
             }
         });
-
     }
-
-
-
-
 }

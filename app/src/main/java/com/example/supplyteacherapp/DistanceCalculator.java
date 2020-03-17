@@ -25,15 +25,6 @@ public class DistanceCalculator {
 
     public  double getDrivingDist(String postcode1, String postcode2) throws ApiException, IOException,InterruptedException
     {
-//
-//        if(postcode1 == null)
-//        {
-//            postcode1 = "sk7 3nb";
-//        }
-//        if(postcode2 == null)
-//        {
-//            postcode2 = "sk7 3nb";
-//        }
 
         DistanceMatrixApiRequest req = DistanceMatrixApi.newRequest(context);
         DistanceMatrix result = req.origins(postcode1)

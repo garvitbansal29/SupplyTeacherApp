@@ -60,7 +60,7 @@ public class TeacherRegisterDetails extends AppCompatActivity {
         drivingLicense = drivingLicense_checkBox.isChecked();
         DBS = dbs_checkBox.isChecked();
         String stringYearsOfExperience = yearsOfExperience_field.getText().toString();
-        yearsOfExperience = Integer.valueOf(stringYearsOfExperience);
+        yearsOfExperience = Integer.parseInt(stringYearsOfExperience);
 //        subjects = subjects_field.getText().toString();
 
 
@@ -84,8 +84,6 @@ public class TeacherRegisterDetails extends AppCompatActivity {
             database.addTeacherSubjects(username, subject);
         }
         scanner.close();
-
-
 
     }
 

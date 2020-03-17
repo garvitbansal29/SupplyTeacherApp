@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.timessquare.CalendarPickerView;
 
 import java.text.DateFormat;
@@ -72,8 +73,8 @@ public class TeacherHome extends AppCompatActivity {
 
     public void setDates_onClick(View v)
     {
-//        getSetDates("3U8XYv26TXYT7eTCSkr5FKDJTt63");
-        teacherDB.getTeacherCurrentSetDates("3U8XYv26TXYT7eTCSkr5FKDJTt63", new Ong() {
+        String username = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        teacherDB.getTeacherCurrentSetDates(username, new Ong() {
             @Override
             public void onStart() {
 
@@ -81,6 +82,8 @@ public class TeacherHome extends AppCompatActivity {
 
             @Override
             public void onSuccessDates(ArrayList<String> currentSetDates) {
+                String username = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                 for(String selectedDate: getSelectedStringDates())
                 {
                     boolean dateRepeat = false;
@@ -95,7 +98,8 @@ public class TeacherHome extends AppCompatActivity {
                     }
                     if(!dateRepeat)
                     {
-                        database.addTeacherAvailability("3U8XYv26TXYT7eTCSkr5FKDJTt63",selectedDate);
+                        database.addTeacherAvailability(username,selectedDate);
+                        System.out.println("date added: " + selectedDate);
                     }
                     else
                     {
